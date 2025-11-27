@@ -37,8 +37,8 @@ export default function UserForm({ onSubmit, loading }: UserFormProps) {
     <div className="w-full max-w-md mx-auto">
       {/* Ultima Markets Logo */}
       <div className="text-center mb-6">
-        <div className="bg-black rounded-lg p-4 inline-block shadow-2xl border border-lime-400/50">
-          <Image src="/images/ultima-logo.png" alt="Ultima Markets" width={200} height={60} className="h-12 w-auto" />
+      <div className="bg-black rounded-lg p-4 inline-block shadow-2xl border border-lime-400/50">
+        <Image src="/ultima-logo.png" alt="Ultima Markets" width={450} height={100} className="h-18  w-32" />
         </div>
       </div>
 

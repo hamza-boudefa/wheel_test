@@ -20,6 +20,7 @@ export default function HomePage() {
   const [isVoucher, setIsVoucher] = useState(false)
   const [originalPrize, setOriginalPrize] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
+  const [isResultTransitioning, setIsResultTransitioning] = useState(false)
 
   useEffect(() => {
     const initDb = async () => {
@@ -67,6 +68,8 @@ export default function HomePage() {
     console.log(wheelPrize)
     if (!user) return
 
+    setIsResultTransitioning(true)
+
     try {
       const response = await fetch("/api/spin", {
         method: "POST",
@@ -91,6 +94,7 @@ export default function HomePage() {
 
       setTimeout(() => {
         setShowResult(true)
+        setIsResultTransitioning(false)
       }, 3000)
 
       setUser((prev) =>
@@ -106,6 +110,7 @@ export default function HomePage() {
     } catch (error) {
       console.error("Error processing spin:", error)
       alert("حدث خطأ أثناء معالجة الدوران.")
+      setIsResultTransitioning(false)
     }
   }
 
@@ -127,6 +132,7 @@ export default function HomePage() {
     setIsVoucher(false)
     setOriginalPrize(null)
     setCopied(false)
+    setIsResultTransitioning(false)
 
     if (user && user.credits <= 0) {
       setUser(null)
@@ -204,8 +210,8 @@ const winningPrize= (wonPrize:any)=>{
               <p className="text-sm text-gray-400 arabic-text">إجمالي المحاولات: {user?.total_spins || 0}</p>
             </div>
             <Button onClick={resetGame} className="w-full arabic-text bg-lime-400 hover:bg-lime-500 text-black">
-              <RotateCcw className="h-4 w-4 ml-2" />
-              العب مرة أخرى
+              {/* <RotateCcw className="h-4 w-4 ml-2" /> */}
+              رجوع للصفحة الرئيسية
             </Button>
           </CardContent>
         </Card>
@@ -220,7 +226,7 @@ const winningPrize= (wonPrize:any)=>{
 
         <div className="text-center mb-6">
           <div className="bg-black rounded-lg p-4 inline-block shadow-2xl border border-lime-400/30">
-            <Image src="/images/ultima-logo.png" alt="Ultima Markets" width={200} height={60} className="h-12 w-auto" />
+            <Image src="/ultima-logo.png" alt="Ultima Markets" width={450} height={100} className="h-18  w-32" />
           </div>
         </div>
 
@@ -248,7 +254,7 @@ const winningPrize= (wonPrize:any)=>{
           )}
         </div>
 
-        <FortuneWheel onSpin={handleSpin} disabled={!user || user.credits <= 0}   getWonPrize={winningPrize} 
+        <FortuneWheel onSpin={handleSpin} disabled={!user || user.credits <= 0 || isResultTransitioning}   getWonPrize={winningPrize} 
   />
 
         {user && user.credits <= 0 && (
@@ -263,7 +269,7 @@ const winningPrize= (wonPrize:any)=>{
                 variant="outline"
                 className="arabic-text border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-black bg-transparent"
               >
-                جرب بريد إلكتروني آخر
+                رجوع للصفحة الرئيسية
               </Button>
             </CardContent>
           </Card>

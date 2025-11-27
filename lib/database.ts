@@ -1,7 +1,11 @@
 import { neon } from "@neondatabase/serverless"
 
+// this is the first database that hase vouchers table : not found
+// const sql = neon(
+//   "postgresql://neondb_owner:npg_UJGV6t7ONWhw@ep-solitary-grass-agzevtrj-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
+// )
 const sql = neon(
-  "postgresql://neondb_owner:npg_UJGV6t7ONWhw@ep-solitary-grass-agzevtrj-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
+  "postgresql://neondb_owner:npg_nyxLQ6sDq3tF@ep-little-lake-a28jzgtp-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
 )
 
 export interface User {

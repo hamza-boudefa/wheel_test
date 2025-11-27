@@ -125,25 +125,19 @@ export default function TermsPage() {
                     <strong>No chance</strong> (No prize)
                   </li>
                   <li>
-                    <strong>$5 bonus credit</strong> (2x)
-                  </li>
-                  <li>
                     <strong>$10 bonus credit</strong> (2x)
                   </li>
                   <li>
-                    <strong>$15 bonus credit</strong>
-                  </li>
-                  <li>
-                    <strong>$20 bonus credit</strong>
-                  </li>
-                  <li>
-                    <strong>$25 bonus credit</strong>
+                    <strong>$20 bonus credit</strong> (2x)
                   </li>
                   <li>
                     <strong>$30 bonus credit</strong>
                   </li>
                   <li>
-                    <strong>$35 bonus credit</strong>
+                    <strong>$40 bonus credit</strong>
+                  </li>
+                  <li>
+                    <strong>$50 bonus credit</strong>
                   </li>
                 </ul>
               </div>
